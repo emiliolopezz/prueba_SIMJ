@@ -60,4 +60,10 @@ class User extends Authenticatable
         
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
+
+    //relacion con los proyectos
+    public function proyectos()
+    {
+        return $this->hasMany(Proyecto::class, 'id_usuario');
+    }
 }
