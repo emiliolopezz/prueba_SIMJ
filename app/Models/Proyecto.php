@@ -19,7 +19,7 @@ class Proyecto extends Model
     ];
 
     //relacion con el modelo usuario
-    public function usuario()
+    public function usuarios()
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
