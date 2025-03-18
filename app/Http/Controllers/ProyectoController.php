@@ -23,6 +23,9 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        return view('proyectos');
+         // verificar si usuario es admin
+        $isAdmin = auth()->check() && auth()->user()->is_admin;
+        return view('proyectos', compact('isAdmin'));
+
     }
 }

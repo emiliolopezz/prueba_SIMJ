@@ -8,11 +8,23 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-    <p>Control de proyectos.</p>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <p class="mb-0">Control de proyectos.</p>
+
+        <div class="ml-auto d-flex">
+            @if($isAdmin)
+                <!-- Botón visible solo para administradores -->
+                <button class="btn btn-primary mr-2">
+                    <i class="fas fa-fw fa-plus"></i>
+                </button>
+            @endif
+            <button class="btn btn-primary">
+                <i class="fas fa-fw fa-file-pdf"></i>
+            </button>
+        </div>
     </div>
     <div class="card-body">
-        <p>proyecto 1</p>
+    <p>hola</p>
     </div>
 
 </div>
