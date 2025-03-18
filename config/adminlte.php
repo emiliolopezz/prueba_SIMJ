@@ -323,7 +323,7 @@ return [
 
         [
             'text' => 'Control Proyectos',
-            'route' => '',
+            'route' => 'proyectos',
             'icon' => 'fas fa-fw fa-folder-open',
         ],
 
