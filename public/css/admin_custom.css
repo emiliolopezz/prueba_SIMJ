@@ -1,0 +1,20 @@
+.bg-custom-blue {
+    background-color: #002883 !important;
+}
+.btn-sidebar {
+    background-color: 
+    #007bff !important; 
+    color: white !important; 
+    border: none !important; 
+}
+
+
+/* Cambiar el color del icono de hamburguesa (solo dentro de la navbar) */
+.navbar-nav a[data-widget="pushmenu"] i {
+    color: #002883 !important;
+}
+
+/* Cambiar el color del icono de inicio (solo dentro de la navbar) */
+.navbar-nav a[href="http://127.0.0.1:8000/home"] i {
+    color: #002883 !important;
+}
