@@ -37,8 +37,6 @@
     </div>
 
 </div>
-    
-@stop
 
 <!-- modal -->
 <div class="modal fade" id="modalProyecto" tabindex="-1" role="dialog" aria-labelledby="modalProyectoLabel" aria-hidden="true">
@@ -67,6 +65,10 @@
     </div>
 </div>
 <!-- modal -->
+    
+@stop
+
+
 @section('css')
     {{-- Añadir la hoja de estilos personalizada --}}
     <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
