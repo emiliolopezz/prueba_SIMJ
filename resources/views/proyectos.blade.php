@@ -24,7 +24,16 @@
         </div>
     </div>
     <div class="card-body">
-    <p>hola</p>
+    <!-- <div class="proyecto">
+        <p>nombre proyecto</p>
+        <div class="d-flex justify-content-between align-items-center">        
+            <p class="nUSU">creado por usuario</p>
+            <p class="fecha">fecha</p>
+    </div> -->
+    <div id="proyectos-container">
+    <!-- los proyectos se cargan aqui -->
+    </div>
+    </div>
     </div>
 
 </div>
@@ -66,29 +75,27 @@
 
 @section('js')
     <script> 
+                //boton + para nuevo proyecto.
                 $(document).ready(function() {
             
             $('#formProyecto').on('submit', function(event) {
                 event.preventDefault();
 
-                // Obtener los datos del formulario
+               
                 var formData = $(this).serialize();
                 console.log(formData);
 
-                // Enviar los datos a través de AJAX
+                
                 $.ajax({
-                    url: '{{ route('proyectos.store') }}', // Ruta para crear el proyecto
+                    url: '{{ route('proyectos.store') }}',
                     type: 'POST',
                     data: formData,
                     success: function(response) {
-                        // Mostrar un mensaje de éxito o actualización de proyectos
+                       
                         alert('Proyecto creado correctamente');
 
-                        // Cerrar el modal
                         $('#modalProyecto').modal('hide');
 
-                        // Opcional: actualizar la lista de proyectos sin recargar la página
-                        // Puedes usar otro AJAX para actualizar la lista de proyectos si lo necesitas.
                     },
                     error: function(xhr) {
                         console.log(xhr.responseText);
@@ -97,6 +104,44 @@
                 });
             });
         });
+    </script>
+    
+    <script>
+        // cargar proyectos
+                $(document).ready(function() {
+            function cargarProyectos() {
+                $.ajax({
+                    url: "{{ url('/api/proyectos') }}",
+                    method: 'GET',
+                    success: function(response) {
+                        var proyectosHTML = '';
+                        
+                        response.proyectos.forEach(function(proyecto) {
+                            console.log(proyecto.nombre);
+                            proyectosHTML += `
+                                <div class="proyecto">
+                                    <p>${proyecto.nombre}</p>
+                                    <div class="d-flex justify-content-between align-items-center">        
+                                        <p class="nUSU">Creado por ${proyecto.nombre_usuario}</p>
+                                        <p class="fecha">${proyecto.fecha_ultimo_uso}</p>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        $('#proyectos-container').html(proyectosHTML);
+                    },
+                    error: function() {
+                        alert("Hubo un error al cargar los proyectos.");
+                    }
+                });
+            }
+
+            cargarProyectos();
+        });
+
+
+
     </script>
 @stop
 

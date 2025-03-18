@@ -18,3 +18,12 @@
 .navbar-nav a[href="http://127.0.0.1:8000/home"] i {
     color: #002883 !important;
 }
+/*recuadros proyecto*/
+
+.proyecto{
+    background-color: yellow;
+    border: 2px solid black;
+    border-radius: 6px;
+    height: 70px;
+}
+

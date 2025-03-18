@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proyecto;
+use Illuminate\Support\Facades\DB;
 
 
 class ProyectoController extends Controller
@@ -56,5 +57,18 @@ class ProyectoController extends Controller
         ]);
     }
 }
+
+public function getAll()
+    {
+       /* $proyectos = DB::select("SELECT * FROM proyectos");
+
+        return response()->json(['proyectos' => $proyectos]);*/
+        $proyectos = DB::table('proyectos')
+        ->join('users', 'proyectos.id_usuario', '=', 'users.id')  // Relación entre artículo y usuario
+        ->select('proyectos.*', 'name as nombre_usuario')   // Seleccionar todos los campos del artículo y el nombre del usuario
+        ->get();
+
+return response()->json(['proyectos' => $proyectos]);
+    }
 
 }
