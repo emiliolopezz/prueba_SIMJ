@@ -32,21 +32,19 @@ class ProyectoController extends Controller
 
     }
 
+    //metodo para guardar proyectos
     public function store(Request $request)
 {
-    // Validación de los datos
     $request->validate([
         'nombre' => 'required|string|max:255',
     ]);
 
-    // Crear el proyecto
     $proyecto = Proyecto::create([
         'nombre' => $request->nombre,
         'id_usuario' => auth()->user()->id,
         'fecha_inicio' => today(),
     ]);
 
-    // Devolver respuesta (si es necesario)
     if ($proyecto) {
         return response()->json([
             'success' => 'Proyecto creado correctamente'
@@ -60,15 +58,13 @@ class ProyectoController extends Controller
 
 public function getAll()
     {
-       /* $proyectos = DB::select("SELECT * FROM proyectos");
-
-        return response()->json(['proyectos' => $proyectos]);*/
+       //selecionar todos los proyectos y nombre usuario
         $proyectos = DB::table('proyectos')
-        ->join('users', 'proyectos.id_usuario', '=', 'users.id')  // Relación entre artículo y usuario
-        ->select('proyectos.*', 'name as nombre_usuario')   // Seleccionar todos los campos del artículo y el nombre del usuario
+        ->join('users', 'proyectos.id_usuario', '=', 'users.id')
+        ->select('proyectos.*', 'name as nombre_usuario')
         ->get();
 
-return response()->json(['proyectos' => $proyectos]);
+        return response()->json(['proyectos' => $proyectos]);
     }
 
 }
