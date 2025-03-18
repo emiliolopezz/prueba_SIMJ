@@ -65,17 +65,24 @@
     </div>
 </div>
 <!-- modal -->
-    
 @stop
+
+@section('content')
+    <div class="container mt-4">
+        <div id="calendar"></div>
+    </div>
+@endsection
 
 
 @section('css')
     {{-- Añadir la hoja de estilos personalizada --}}
     <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet" />
 @stop
 
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
     <script> 
         // cargar proyectos
         $(document).ready(function() {
@@ -141,6 +148,9 @@
                     }
                 });
             });
+            //aqui calendario
+            
+            //--fin de document ready function
         });
     </script>
 @stop

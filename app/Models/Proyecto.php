@@ -23,4 +23,10 @@ class Proyecto extends Model
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
+
+    //relacion con las tareas
+    public function tareas()
+    {
+        return $this->hasMany(Tarea::class, 'id_proyecto');
+    }
 }
