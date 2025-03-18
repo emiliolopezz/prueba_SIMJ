@@ -84,6 +84,13 @@
                     url: "{{ url('/api/proyectos') }}",
                     method: 'GET',
                     success: function(response) {
+                    //ordenar proyectos fecha ultimo uso
+                    response.proyectos.sort(function(a, b) {
+                        
+                        var fechaA = new Date(a.fecha_ultimo_uso);
+                        var fechaB = new Date(b.fecha_ultimo_uso);
+                        return fechaB - fechaA; 
+                    });
                     var proyectosHTML = '';
                     response.proyectos.forEach(function(proyecto) {
                         console.log(proyecto.nombre);
