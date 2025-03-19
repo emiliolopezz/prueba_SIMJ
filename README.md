@@ -18,7 +18,7 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 1. Clonar el repositorio:
    git clone https://github.com/tu-usuario/prueba-simj.git
-   cd prueba-simj
+   `cd prueba-simj`
 2. Instalar dependencias:
 	composer install
 	npm install
