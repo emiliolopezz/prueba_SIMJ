@@ -134,11 +134,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="fecha_desde">Fecha Desde:</label>
+                        <label for="fecha_desde">Desde fecha:</label>
                         <input type="datetime-local" id="fecha_desde" name="fecha_desde" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="fecha_hasta">Fecha Hasta:</label>
+                        <label for="fecha_hasta">Hasta fecha:</label>
                         <input type="datetime-local" id="fecha_hasta" name="fecha_hasta" class="form-control">
                     </div>
                     <div class="form-group">

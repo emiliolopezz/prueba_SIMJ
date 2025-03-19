@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Tareas</title>
+    <title>Informe de Tareas Realizadas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header div {
+            text-align: right;
+            font-size: 14px;
         }
         table {
             width: 100%;
@@ -14,56 +28,70 @@
             margin: 20px 0;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #000;
         }
-        th, td {
+        th {
+            background-color: #003366;
+            color: white;
             padding: 8px;
             text-align: left;
         }
-        th {
-            background-color: #f2f2f2;
+        td {
+            padding: 8px;
+            text-align: left;
         }
         .totales {
             font-weight: bold;
+            text-align: right;
         }
     </style>
 </head>
 <body>
-    <h1>Informe de Tareas</h1>
-    <p><strong>Filtros aplicados:</strong></p>
-    <ul>
-        <li><strong>Proyecto:</strong> {{ $filtros['proyecto'] ?? 'Todos' }}</li>
-        <li><strong>Fecha Desde:</strong> {{ $filtros['fecha_desde'] ?? 'No especificada' }}</li>
-        <li><strong>Fecha Hasta:</strong> {{ $filtros['fecha_hasta'] ?? 'No especificada' }}</li>
-        <li><strong>Usuario:</strong> {{ $filtros['usuario'] ?? 'Todos' }}</li>
-    </ul>
+    <div class="header">
+        <h1>SOLUCIONES INFORMÁTICAS MJ, S.C.A.</h1>
+        <div>
+            <p><strong>Desde Fecha:</strong> {{ $filtros['fecha_desde'] ?? 'No especificada' }}</p>
+            <p><strong>Hasta Fecha:</strong> {{ $filtros['fecha_hasta'] ?? 'No especificada' }}</p>
+            <p><strong>Proyecto:</strong> {{ $filtros['proyecto_nombre'] ?? 'Todos' }}</p>
+            <p><strong>Usuario:</strong> {{ $filtros['usuario_nombre'] ?? 'Todos' }}</p>
+        </div>
+    </div>
+    
+    <h2>INFORME DE TAREAS REALIZADAS</h2>
+    
+    <h3>{{ $filtros['proyecto_nombre'] ?? 'Todos los Proyectos' }}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Min.</th>
+            <th>Usuario</th>
+            <th>Tarea Realizada</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach ($tareas as $tarea)
+    <tr>
+        <td>{{ $tarea->id }}</td>
+        <td>{{ $tarea->fecha_inicio }}</td>
+        <td>{{ $tarea->fecha_fin }}</td>
+        <td>{{ $tarea->duracion_mins }}</td>
+        <td>{{ $tarea->usuario->name }}</td>
+        <td>{{ $tarea->tarea }}</td>
+    </tr>
+@endforeach
+    </tbody>
+</table>
+<table>
+  <tr>
+    <th>Total minutos:</th>
+    <td>{{ $totalMinutos }}</td>
+  </tr>
+</table>
 
-    <h2>Tareas</h2>
-    @foreach ($proyectos as $proyecto)
-        <h3>{{ $proyecto->nombre }}</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tarea</th>
-                    <th>Usuario</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin</th>
-                    <th>Tiempo (minutos)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($tareas->where('proyecto_id', $proyecto->id) as $tarea)
-                    <tr>
-                        <td>{{ $tarea->nombre_tarea }}</td>
-                        <td>{{ $tarea->usuario->name }}</td>
-                        <td>{{ $tarea->fecha_inicio }}</td>
-                        <td>{{ $tarea->fecha_fin }}</td>
-                        <td>{{ $tarea->fecha_fin->diffInMinutes($tarea->fecha_inicio) }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <p class="totales">Tiempo total del proyecto: {{ $proyecto->total_tiempo }} minutos</p>
-    @endforeach
-</body>
-</html>
+
+
+    </body>
+    </html>

@@ -20,13 +20,13 @@ class Tarea extends Model
     ];
 
 //relacion con el modelo proyecto
-    public function proyectos()
+    public function proyecto()
     {
         return $this->belongsTo(Proyecto::class, 'id_proyecto');
     }
 
     //relacion con el modelo usuario
-    public function usuarios()
+    public function usuario()
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
