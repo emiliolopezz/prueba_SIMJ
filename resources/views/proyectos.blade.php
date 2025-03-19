@@ -22,7 +22,7 @@
                                 <i class="fas fa-fw fa-plus"></i>
                             </button>
                         @endif
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalFiltros">
                             <i class="fas fa-fw fa-file-pdf"></i>
                         </button>
                     </div>
@@ -114,6 +114,50 @@
     </div>
 </div>
 
+<!-- Modal de pdf -->
+<div class="modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltrosLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalFiltrosLabel">Generar Informe de Tareas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formFiltro" method="GET" action="{{ route('tareas.informe') }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="proyecto">Selecciona un Proyecto:</label>
+                        <select id="proyecto" name="proyecto" class="form-control">
+                            <!-- opciones de proyectos -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_desde">Fecha Desde:</label>
+                        <input type="datetime-local" id="fecha_desde" name="fecha_desde" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_hasta">Fecha Hasta:</label>
+                        <input type="datetime-local" id="fecha_hasta" name="fecha_hasta" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario">Selecciona un Usuario:</label>
+                        <select id="usuario" name="usuario" class="form-control">
+                            <!-- opciones de usuarios -->
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Generar Informe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 @stop
 
@@ -141,6 +185,7 @@
 
             var containerEl = document.getElementById('proyectos-container');
             var calendarEl = document.getElementById('calendar');
+            cargarProyectosModal();
 
             // cargar los usuarios en el select
             $.ajax({
@@ -298,6 +343,49 @@
             }
 
             cargarProyectos();
+
+            // boton pdf
+                        // Cargar los proyectos en el select de proyectos
+                function cargarProyectosModal() {
+                $.ajax({
+                    url: "{{ url('/api/proyectos') }}",
+                    type: 'GET',
+                    success: function(response) {
+                        var proyectoSelector = $('#proyecto');
+                        proyectoSelector.empty();//borrar select en cada nueva entrada
+                        response.proyectos.forEach(function(proyecto) {
+                            proyectoSelector.append(new Option(proyecto.nombre, proyecto.id)); 
+                        });
+                    },
+                    error: function() {
+                        alert("Hubo un error al cargar los proyectos.");
+                    }
+                });
+            };
+
+                // Cargar los usuarios en el select de usuarios
+                $.ajax({
+                    url: "{{ route('usuarios.getAll') }}",
+                    type: 'GET',
+                    success: function(response) {
+                        var usuarioSelector = $('#usuario');
+                        response.usuarios.forEach(function(usuario) {
+                            usuarioSelector.append(new Option(usuario.name, usuario.id));  // Agregar opción al selector
+                        });
+                    },
+                    error: function() {
+                        alert("Hubo un error al cargar los usuarios.");
+                    }
+                });
+
+                //----prueba cerrar modal despues de informe
+                $('#formFiltro').on('submit', function(event) {
+                    alert('Informe generado correctamente');
+                    $('#modalFiltros').modal('hide');
+                        cargarProyectos();
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                });
            // boton + para nuevo proyecto.
         
             
@@ -316,6 +404,7 @@
                         alert('Proyecto creado correctamente');
                         $('#modalProyecto').modal('hide');
                         cargarProyectos();
+                        cargarProyectosModal();
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove(); 
 

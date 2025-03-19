@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\TareaController;
+use App\Http\Controllers\InformeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +18,6 @@ Route::get('/api/proyectos', [ProyectoController::class, 'getAll']);
 Route::post('/tareas', [TareaController::class, 'store'])->name('tareas.store');
 Route::get('/tareas/usuario/{userId}', [TareaController::class, 'getTareasPorUsuario']);
 Route::get('/usuarios', [ProyectoController::class, 'getAllUsuarios'])->name('usuarios.getAll');
+Route::get('/informe/tareas', [InformeController::class, 'generarInforme'])->name('tareas.informe');
+
 
