@@ -1,5 +1,5 @@
 ## EMILIO LOPEZ LEON
-## PRUEBA TECNICA
+## <h2 align="center">PRUEBA TECNICA</h2>
 ## DOCUMENTACION
 
 Este proyecto tiene como objetivo crear una aplicación web de gestión de tareas, permitiendo gestionar proyectos, asignar tareas a usuarios, registrar tiempos y generar informes en formato PDF.
@@ -76,4 +76,22 @@ Para generar un pdf, presionar el boton de pdf y selecciona el rango de fechas, 
 
 - Pagina para acceder a la aplicacion:<br>
 ![Logo](readme_assets/welcome.png)
-- Pagina de registro:
+- Pagina de registro:<br>
+![Logo](readme_assets/registro.png)
+- Pagina de login:<br>
+![Logo](readme_assets/login.png)
+- Documentación gráfica sobre interfaz administrador y funciones:<br>
+![Logo](readme_assets/proyectosAdmin.png)
+- Documentación gráfica sobre interfaz SIN SER ADMINISTRADOR (El boton para crear proyecto no esta):<br>
+![Logo](readme_assets/proyectosNoAdmin.png)
+- Se debe poder arrastrar la tarjeta del proyecto sobre el calendario.<br>
+![Logo](readme_assets/arrastrarCalen.png)
+- lo que abrirá una ventana emergente con la información de la tarea a rellenar (Manteniendo la fecha y hora de inicio a la que se arrastró la tarjeta):
+![Logo](readme_assets/inicioTarea.png)
+- Deberán aparecer cargados todos los eventos guardados en el calendario de cada usuario:
+![Logo](readme_assets/eventosCalen1.png)
+![Logo](readme_assets/eventosCalen2.png)
+- El informe PDF deberá tener las siguientes opciones para filtrar: <br>
+![Logo](readme_assets/botonPdf.png)
+- Diseño del informe:<br>
+![Logo](readme_assets/pdf.png)
