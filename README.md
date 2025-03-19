@@ -34,23 +34,23 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 ## 2-Explicación de la estructura del código
 
--app/Http/Controllers → Controladores de usuarios, proyectos, tareas y informes.
--app/Models → Modelos de base de datos.
--database/migrations → Migraciones de la base de datos.
--resources/views → Vistas Blade con AdminLTE.
--public/ → Archivos estáticos de AdminLTE y FullCalendar.
+- app/Http/Controllers → Controladores de usuarios, proyectos, tareas y informes.
+- app/Models → Modelos de base de datos.
+- database/migrations → Migraciones de la base de datos.
+- resources/views → Vistas Blade con AdminLTE.
+- public/ → Archivos estáticos de AdminLTE y FullCalendar.
 
 ## 3-Breve manual de uso
 
--Registrarse en el sistema.
--Autenticarse en el sistema.
--Crear proyectos y asignarles tareas arrastrándolos al calendario.
--Generar informes en PDF desde la sección de reportes.
+- Registrarse en el sistema.
+- Autenticarse en el sistema.
+- Crear proyectos y asignarles tareas arrastrándolos al calendario.
+- Generar informes en PDF desde la sección de reportes.
 
 ## 4-Información sobre el servidor web y entornos usados
 
--Servidor Web: Apache con Laravel en XAMPP..
--Base de Datos: MySQL.
--Framework: Laravel 12.
--Frontend: Bootstrap, AdminLTE, FullCalendar.
+- Servidor Web: Apache con Laravel en XAMPP..
+- Base de Datos: MySQL.
+- Framework: Laravel 12.
+- Frontend: Bootstrap, AdminLTE, FullCalendar.
 
