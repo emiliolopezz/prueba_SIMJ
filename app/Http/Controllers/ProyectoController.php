@@ -59,7 +59,7 @@ class ProyectoController extends Controller
 
 public function getAll()
     {
-       //selecionar todos los proyectos y nombre usuario
+       
         $proyectos = DB::table('proyectos')
         ->join('users', 'proyectos.id_usuario', '=', 'users.id')
         ->select('proyectos.*', 'name as nombre_usuario')

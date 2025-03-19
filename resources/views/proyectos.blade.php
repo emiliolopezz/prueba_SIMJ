@@ -139,8 +139,10 @@
                         alert('Tarea guardada correctamente');
                         $('#modalFechaHora').modal('hide'); 
                         $('#formTarea')[0].reset(); 
-                        calendar.refetchEvents(); // Recargar no funciona
-                        location.reload(); //recarga pagina solucion
+                        calendar.removeAllEvents();
+                        calendar.refetchEvents(); 
+                        //location.reload(); //recarga pagina solucion
+                        cargarProyectos();
 
                     },
                     error: function(xhr, status, error) {
@@ -188,18 +190,18 @@
                 drop: function(info) {
                     var date = info.date;
                     
-                    // Obtener la fecha y hora local correctamente
+                    // Obtener la fecha y hora
                     var currentDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
                     var currentDateTime = currentDate.toISOString().slice(0, 16);
 
-                    var projectId = $(info.draggedEl).data('id'); // ID del proyecto
+                    var projectId = $(info.draggedEl).data('id');
 
-                    // Asignar valores correctos a los campos del modal
+                
                     $('#fecha_inicio').val(currentDateTime);
                     $('#fecha_fin').val(currentDateTime);
                     $('#id_proyecto').val(projectId);
 
-                    // Mostrar el modal
+                    //activar modal
                     $('#modalFechaHora').modal('show');
                 }
             });
