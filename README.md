@@ -1,5 +1,5 @@
-## EMILIO LOPEZ LEON
-## <h2 align="center">PRUEBA TECNICA</h2>
+ <h2 align="center">EMILIO LOPEZ LEON</h2>
+ <h2 align="center">PRUEBA TECNICA</h2>
 ## DOCUMENTACION
 
 Este proyecto tiene como objetivo crear una aplicación web de gestión de tareas, permitiendo gestionar proyectos, asignar tareas a usuarios, registrar tiempos y generar informes en formato PDF.
