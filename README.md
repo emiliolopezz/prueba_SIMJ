@@ -1,3 +1,5 @@
+## EMILIO LOPEZ LEON
+## PRUEBA TECNICA
 ## DOCUMENTACION
 
 Este proyecto tiene como objetivo crear una aplicación web de gestión de tareas, permitiendo gestionar proyectos, asignar tareas a usuarios, registrar tiempos y generar informes en formato PDF.
@@ -70,3 +72,8 @@ Para generar un pdf, presionar el boton de pdf y selecciona el rango de fechas, 
 - Framework: Laravel 12.
 - Frontend: Bootstrap, AdminLTE, FullCalendar.
 
+## 5-Demostraciones
+
+- Pagina para acceder a la aplicacion:<br>
+![Logo](readme_assets/welcome.png)
+- Pagina de registro:
