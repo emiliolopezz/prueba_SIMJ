@@ -8,7 +8,8 @@ Este proyecto tiene como objetivo crear una aplicación web de gestión de tarea
 📌1-Instrucciones de instalación y configuración <br>
 📌2-Explicación de la estructura del código <br>
 📌3-Breve manual de uso <br>
-📌4-Información sobre el servidor web y entornos usados
+📌4-Información sobre el servidor web y entornos usados <br>
+📌5-Demostraciones
 
 Proyecto desarrollado en Laravel 12 con Bootstrap 4 y AdminLTE 3, utilizando AJAX para gestión de usuarios y proyectos, FullCalendar para tareas y DomPDF para generación de informes.
 
