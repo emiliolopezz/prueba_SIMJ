@@ -47,6 +47,19 @@ class InformeController extends Controller
     if ($request->filled('usuario')) {
         $query->where('id_usuario', $request->usuario);
     }
+    
+    // Filtrar por fecha desde
+    if ($request->filled('fecha_desde')) {
+        $fechaDesde = Carbon::parse($request->fecha_desde)->startOfDay()->toDateString();
+        $query->whereDate('fecha_inicio', '>=', $fechaDesde);
+    }
+
+    // Filtrar por fecha hasta
+    if ($request->filled('fecha_hasta')) {
+        $fechaHasta = Carbon::parse($request->fecha_hasta)->endOfDay()->toDateString();
+        $query->whereDate('fecha_fin', '<=', $fechaHasta);
+    }
+ 
 
 
     // tareas con la relación de proyecto y usuario
