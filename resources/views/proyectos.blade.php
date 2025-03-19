@@ -1,29 +1,44 @@
 @extends('adminlte::page')
 
+@section('title', 'Proyectos')
+
 @section('content_header')
     <br>
 @stop
 
 @section('content')
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <p class="mb-0">Control de proyectos.</p>
 
-        <div class="ml-auto d-flex">
-            @if($isAdmin)
-                <!-- admin -->
-                <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#modalProyecto">
-                    <i class="fas fa-fw fa-plus"></i>
-                </button>
-            @endif
-            <button class="btn btn-primary">
-                <i class="fas fa-fw fa-file-pdf"></i>
-            </button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                    <p class="mb-0">Control de proyectos.</p>
+
+                    <div class="ml-auto d-flex">
+                        @if($isAdmin)
+                            <!-- admin -->
+                            <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#modalProyecto">
+                                <i class="fas fa-fw fa-plus"></i>
+                            </button>
+                        @endif
+                        <button class="btn btn-primary">
+                            <i class="fas fa-fw fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="proyectos-container">
+                        <!-- los proyectos se muestran aqui -->
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card-body">
-        <div id="proyectos-container">
-            <!-- los proyectos se muestran aqui -->
+
+        <div class="col-md-7">
+            <div class="card">
+                <div id="calendar"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -88,7 +103,7 @@
     </div>
 </div>
 
-<div id="calendar"></div>
+
 @stop
 
 @section('css')
@@ -100,12 +115,12 @@
 @section('js')
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/interaction/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/es.js"></script>
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -170,6 +185,8 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
+                initialView: 'timeGridDay',
+                locale: 'es',
                 editable: true,
                 droppable: true, 
                 events: function(info, successCallback, failureCallback) {
