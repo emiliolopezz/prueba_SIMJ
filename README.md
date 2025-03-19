@@ -49,19 +49,22 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 ## 3-Breve manual de uso
 
 - Registrarse en el sistema.
-- Autenticarse en el sistema.
-- Crear proyectos y asignarles tareas arrastrándolos al calendario.
-- Generar informes en PDF desde la sección de reportes.
+- Autenticarse en el sistema:<br>
+Si es la primera vez que usas la aplicación, crea una cuenta de usuario desde la página de inicio..
+- Crear proyectos y asignarles tareas arrastrándolos al calendario:<br>
+Una vez dentro, los administradores pueden crear nuevos proyectos desde el boton de '+'.<br>
+Cada proyecto puede tener múltiples tareas que se asignan arrastrandolas al calendario.
+- Generar informes en PDF:<br>
+Para generar un pdf, presionar el boton de pdf y selecciona el rango de fechas, el proyecto y el usuario. Luego haz clic en 'Generar Informe' y podrás descargar el PDF generado.
+
 
 ## 4-Información sobre el servidor web y entornos usados
 
 - Caracteristicas servidor Web:<br>
-Apache con Laravel en XAMPP.<br>
-Servidor web: Apache.<br>
-PHP: Versión 8.1<br>
-Base de datos: MySQL.<br>
-Entorno de desarrollo: XAMPP (en local)<br>
-- Base de Datos: MySQL.
+-Servidor web: Apache.<br>
+-PHP: Versión 8.1<br>
+-Base de datos: MySQL.<br>
+-Entorno de desarrollo: XAMPP (en local)<br>
 - Framework: Laravel 12.
 - Frontend: Bootstrap, AdminLTE, FullCalendar.
 
