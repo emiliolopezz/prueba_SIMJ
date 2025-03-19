@@ -29,8 +29,10 @@ Proyecto desarrollado en Laravel 12 con Bootstrap 4 y AdminLTE 3, utilizando AJA
    cd prueba-simj
    ```
 2. Instalar dependencias:<br>
-	```composer install <br>
-	npm install```
+	```
+	composer install
+	npm install
+	```
 3. Configurar entorno:<br>
 	```cp .env.example .env```
 4. Generar clave y ejecutar migraciones:<br>
