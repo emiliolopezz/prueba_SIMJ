@@ -186,22 +186,20 @@
                     });
                 },
                 drop: function(info) {
-                    var date = info.date; 
-                    var formattedDate = date.toISOString(); 
-                    var projectId = $(info.draggedEl).data('id'); //id del proyecto
-
-                    // Asignar la fecha y hora actuales como valor por defecto en el campo de fecha de inicio
-                    var currentDate = new Date();
-                    var currentDateTime = currentDate.toISOString().slice(0, 16); 
-
-                   
-                    $('#fecha_inicio').val(currentDateTime);
-                    $('#fecha_fin').val(currentDateTime); 
-
+                    var date = info.date;
                     
+                    // Obtener la fecha y hora local correctamente
+                    var currentDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+                    var currentDateTime = currentDate.toISOString().slice(0, 16);
+
+                    var projectId = $(info.draggedEl).data('id'); // ID del proyecto
+
+                    // Asignar valores correctos a los campos del modal
+                    $('#fecha_inicio').val(currentDateTime);
+                    $('#fecha_fin').val(currentDateTime);
                     $('#id_proyecto').val(projectId);
 
-                    
+                    // Mostrar el modal
                     $('#modalFechaHora').modal('show');
                 }
             });
