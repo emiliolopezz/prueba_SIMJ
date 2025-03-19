@@ -16,21 +16,21 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 ## 1-Instrucciones de instalación y configuración
 
-1. Clonar el repositorio:
-   git clone https://github.com/tu-usuario/prueba-simj.git
-   `cd prueba-simj`
-2. Instalar dependencias:
-	composer install
-	npm install
-3. Configurar entorno:
-	cp .env.example .env
-4. Generar clave y ejecutar migraciones:
-	php artisan key:generate
-	php artisan migrate
-5. Compilar assets:
-	npm run dev
-6. Iniciar el servidor:
-	php artisan serve
+1. Clonar el repositorio:<br>
+   ```git clone https://github.com/tu-usuario/prueba-simj.git``` <br>
+   ```cd prueba-simj```
+2. Instalar dependencias:<br>
+	```composer install``` <br>
+	```npm install```
+3. Configurar entorno:<br>
+	```cp .env.example .env```
+4. Generar clave y ejecutar migraciones:<br>
+	```php artisan key:generate``` <br>
+	```php artisan migrate```
+5. Compilar assets:<br>
+	```npm run dev```
+6. Iniciar el servidor:<br>
+	```php artisan serve```
 
 ## 2-Explicación de la estructura del código
 
