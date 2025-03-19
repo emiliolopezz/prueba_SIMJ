@@ -329,7 +329,7 @@ return [
 
         [
             'text' => 'Usuarios',
-            'route' => '',
+            'route' => 'usuario',
             'icon' => 'fas fa-fw fa-user-cog',
         ],
     ],

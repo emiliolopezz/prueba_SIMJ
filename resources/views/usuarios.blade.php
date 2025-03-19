@@ -1,19 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Inicio')
+@section('title', 'Usuarios')
 
 @section('content_header')
-    <h1>Inicio</h1>
+<h1>Bienvenido, {{ Auth::user()->name }}</h1>
 @stop
 
 @section('content')
-<div class="card">
+    <div class="card">
         <div class="card-header">
-            <h2>Prueba técnica SIMJ</h2>
+            <h4>Panel de configuracion de usuario</h4>
         </div>
         <div class="card-body">
-            <p>Realizada por:</p>
-            <h4>EMILIO LOPEZ LEON</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, rem.</p>
         </div>
     </div>
 @stop
