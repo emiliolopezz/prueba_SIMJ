@@ -11,10 +11,11 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 ## 📌 Requisitos
 
-- PHP 8 o superior
-- Composer
-- MySQL / MariaDB
-- Node.js y NPM
+- Laravel.
+- PHP 8 o superior.
+- Composer.
+- MySQL.
+- Node.js y NPM.
 
 ## 1-Instrucciones de instalación y configuración
 
@@ -48,9 +49,10 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 ## 3-Breve manual de uso
 
-- Registrarse en el sistema.
+- Registrarse en el sistema.<br>
+Si es la primera vez que usas la aplicación, crea una cuenta de usuario desde la página de inicio.
 - Autenticarse en el sistema:<br>
-Si es la primera vez que usas la aplicación, crea una cuenta de usuario desde la página de inicio..
+Desde la pagina de inicio, iniciar sesion.
 - Crear proyectos y asignarles tareas arrastrándolos al calendario:<br>
 Una vez dentro, los administradores pueden crear nuevos proyectos desde el boton de '+'.<br>
 Cada proyecto puede tener múltiples tareas que se asignan arrastrandolas al calendario.
