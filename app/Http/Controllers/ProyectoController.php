@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proyecto;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -29,8 +30,23 @@ class ProyectoController extends Controller
     {
          // verificar si usuario es admin
         $isAdmin = auth()->check() && auth()->user()->is_admin;
-        return view('proyectos', compact('isAdmin'));
+        //return view('proyectos', compact('isAdmin'));
+        return view('proyectos', [
+            'userId' => auth()->user()->id,  // ID del usuario autenticado
+            'isAdmin' => $isAdmin            // Estado si el usuario es admin o no
+        ]);
 
+    }
+
+    public function getAllUsuarios()
+    {
+       
+        $usuarios = User::all();
+
+        
+        return response()->json([
+            'usuarios' => $usuarios
+        ]);
     }
 
     //metodo para guardar proyectos

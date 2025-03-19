@@ -37,6 +37,17 @@
 
         <div class="col-md-7">
             <div class="card">
+                <!-- selector usuarios -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="userSelector">Mi Calendario:</label>
+                        <select id="userSelector" class="form-control" style="width: 200px;">
+                        <option value="">Selecciona un usuario</option>
+                            <!-- las opciones se muestran aqui -->
+                        </select>
+                    </div>
+                </div>
+                <!-- calendario -->
                 <div id="calendar"></div>
             </div>
         </div>
@@ -123,12 +134,33 @@
 
 
     <script>
+        var calendar;
         document.addEventListener('DOMContentLoaded', function() {
             var Calendar = FullCalendar.Calendar;
             var Draggable = FullCalendar.Draggable;
 
             var containerEl = document.getElementById('proyectos-container');
             var calendarEl = document.getElementById('calendar');
+
+            // cargar los usuarios en el select
+            $.ajax({
+                url: "{{ route('usuarios.getAll') }}",
+                type: 'GET',
+                success: function(response) {
+                    var userSelector = $('#userSelector');
+                    response.usuarios.forEach(function(user) {
+                        userSelector.append(new Option(user.name, user.id));
+                    });
+                    
+                    var userId = {{ $userId }};  
+                    console.log("id susario:",userId);
+                    userSelector.val(userId);  
+                    initializeCalendar();
+                },
+                error: function() {
+                    alert("Hubo un error al cargar los usuarios.");
+                }
+            });
 
             // Guardar tarea cuando abre modal
             $('#formTarea').on('submit', function(event) {
@@ -179,51 +211,57 @@
             });
 
             // calendario
-            var calendar = new Calendar(calendarEl, {
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                initialView: 'timeGridDay',
-                locale: 'es',
-                editable: true,
-                droppable: true, 
-                events: function(info, successCallback, failureCallback) {
+            
+            function initializeCalendar() {
+        
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            initialView: 'timeGridDay',
+            locale: 'es',
+            editable: true,
+            droppable: true,
+            events: function(info, successCallback, failureCallback) {
+                var userId = $('#userSelector').val();  
+                console.log("selector:", userId);
 
-                    
-                    $.ajax({
-                        url: '/tareas/usuario/', 
-                        method: 'GET',
-                        success: function(response) {
-                            
-                            successCallback(response);
-                        },
-                        error: function() {
-                            failureCallback('Hubo un error al cargar las tareas');
-                        }
-                    });
-                },
-                drop: function(info) {
-                    var date = info.date;
-                    
-                    // Obtener la fecha y hora
-                    var currentDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
-                    var currentDateTime = currentDate.toISOString().slice(0, 16);
+                $.ajax({
+                    url: '/tareas/usuario/' + userId,  
+                    method: 'GET',
+                    success: function(response) {
+                        console.log(response);
+                        successCallback(response);  
+                    },
+                    error: function() {
+                        failureCallback('Hubo un error al cargar las tareas');
+                    }
+                });
+            },
+            drop: function(info) {
+                var date = info.date;
+                var currentDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+                var currentDateTime = currentDate.toISOString().slice(0, 16);
+                var projectId = $(info.draggedEl).data('id');
 
-                    var projectId = $(info.draggedEl).data('id');
+                $('#fecha_inicio').val(currentDateTime);
+                $('#fecha_fin').val(currentDateTime);
+                $('#id_proyecto').val(projectId);
 
-                
-                    $('#fecha_inicio').val(currentDateTime);
-                    $('#fecha_fin').val(currentDateTime);
-                    $('#id_proyecto').val(projectId);
+                $('#modalFechaHora').modal('show');
+            }
+        });
 
-                    //activar modal
-                    $('#modalFechaHora').modal('show');
-                }
-            });
+        // recargar los eventos cada vez que el usuario seleccione uno nuevo
+        $('#userSelector').on('change', function() {
+            calendar.refetchEvents();  
+        });
 
-            calendar.render();
+        calendar.render();
+    }
+
 
             // Cargar los proyectos
             function cargarProyectos() {

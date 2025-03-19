@@ -10,12 +10,11 @@ use Auth;
 
 class TareaController extends Controller
 {
-    public function getTareasPorUsuario()
+    public function getTareasPorUsuario($userId)
     {
-        $userId = auth()->id();
+        
         
         $tareas = Tarea::where('id_usuario', $userId)->get();
-
         
         $eventos = $tareas->map(function($tarea) {
             return [

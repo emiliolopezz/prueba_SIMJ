@@ -15,5 +15,6 @@ Route::get('/proyectos', [App\Http\Controllers\ProyectoController::class, 'index
 Route::post('/proyectos', [ProyectoController::class, 'store'])->name('proyectos.store');
 Route::get('/api/proyectos', [ProyectoController::class, 'getAll']);
 Route::post('/tareas', [TareaController::class, 'store'])->name('tareas.store');
-Route::get('/tareas/usuario', [TareaController::class, 'getTareasPorUsuario']);
+Route::get('/tareas/usuario/{userId}', [TareaController::class, 'getTareasPorUsuario']);
+Route::get('/usuarios', [ProyectoController::class, 'getAllUsuarios'])->name('usuarios.getAll');
 
