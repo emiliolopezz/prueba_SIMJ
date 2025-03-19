@@ -1,8 +1,8 @@
 ## DOCUMENTACION
 
-📌1-Instrucciones de instalación y configuración
-📌2-Explicación de la estructura del código
-📌3-Breve manual de uso
+📌1-Instrucciones de instalación y configuración <br>
+📌2-Explicación de la estructura del código <br>
+📌3-Breve manual de uso <br>
 📌4-Información sobre el servidor web y entornos usados
 
 Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJAX para gestión de usuarios y proyectos, FullCalendar para tareas y DomPDF para generación de informes.
