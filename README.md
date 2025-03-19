@@ -1,5 +1,7 @@
 ## DOCUMENTACION
 
+Este proyecto tiene como objetivo crear una aplicación web de gestión de tareas, permitiendo gestionar proyectos, asignar tareas a usuarios, registrar tiempos y generar informes en formato PDF.
+
 📌1-Instrucciones de instalación y configuración <br>
 📌2-Explicación de la estructura del código <br>
 📌3-Breve manual de uso <br>
@@ -53,7 +55,12 @@ Proyecto desarrollado en Laravel 10 con Bootstrap 4 y AdminLTE 3, utilizando AJA
 
 ## 4-Información sobre el servidor web y entornos usados
 
-- Servidor Web: Apache con Laravel en XAMPP..
+- Caracteristicas servidor Web:<br>
+Apache con Laravel en XAMPP.<br>
+Servidor web: Apache.<br>
+PHP: Versión 8.1<br>
+Base de datos: MySQL.<br>
+Entorno de desarrollo: XAMPP (en local)<br>
 - Base de Datos: MySQL.
 - Framework: Laravel 12.
 - Frontend: Bootstrap, AdminLTE, FullCalendar.
