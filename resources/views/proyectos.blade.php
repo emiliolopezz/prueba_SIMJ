@@ -1,6 +1,10 @@
 @extends('adminlte::page')
 
 @section('title', 'Proyectos')
+    
+@section('content_header')
+<h1>Gestión proyectos</h1>
+@stop
 
 @section('content')
 
@@ -34,7 +38,6 @@
         <div class="col-md-7 mb-4">
             <div class="card shadow-sm p-3">
                 <div class="form-group">
-                    <label for="userSelector">Mi Calendario:</label>
                     <select id="userSelector" class="form-control" style="width: 200px;">
                         <option value="">Selecciona un usuario</option>
                         <!-- Opciones -->
