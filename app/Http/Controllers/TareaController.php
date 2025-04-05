@@ -10,13 +10,18 @@ use Auth;
 
 class TareaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getTareasPorUsuario($userId)
     {
-        
-        
+
+
         $tareas = Tarea::where('id_usuario', $userId)->get();
-        
-        $eventos = $tareas->map(function($tarea) {
+
+        $eventos = $tareas->map(function ($tarea) {
             return [
                 'title' => $tarea->tarea,
                 'start' => $tarea->fecha_inicio,
@@ -25,14 +30,14 @@ class TareaController extends Controller
             ];
         });
 
-       
+
         return response()->json($eventos);
     }
 
     //metodo para guardar tareas
     public function store(Request $request)
     {
-        
+
         $validated = $request->validate([
             'id_proyecto' => 'required|exists:proyectos,id',
             'nombre_tarea' => 'required|string|max:255',
@@ -40,7 +45,7 @@ class TareaController extends Controller
             'fecha_fin' => 'required|date',
         ]);
 
-       
+
         $tarea = new Tarea();
         $tarea->id_usuario = auth()->id();
         $tarea->tarea = $validated['nombre_tarea'];
@@ -52,11 +57,10 @@ class TareaController extends Controller
         // actualizar la fecha ultimo uso en la tabla proyectos
         $proyecto = Proyecto::find($validated['id_proyecto']);
         if ($proyecto) {
-        $proyecto->fecha_ultimo_uso = date('Y-m-d', strtotime($validated['fecha_fin']));
-        $proyecto->save();
-    }
+            $proyecto->fecha_ultimo_uso = date('Y-m-d', strtotime($validated['fecha_fin']));
+            $proyecto->save();
+        }
 
         return response()->json(['message' => 'Tarea guardada correctamente']);
     }
-
 }

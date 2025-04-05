@@ -64,6 +64,8 @@ Una vez dentro, los administradores pueden crear nuevos proyectos desde el boton
 Cada proyecto puede tener múltiples tareas que se asignan arrastrandolas al calendario.
 - Generar informes en PDF:<br>
 Para generar un pdf, presionar el boton de pdf y selecciona el rango de fechas, el proyecto y el usuario. Luego haz clic en 'Generar Informe' y podrás descargar el PDF generado.
+- Sección Usuarios.<br>
+Esta sección es solo para los usuarios administradores, desde la que pueden crear, editar y eliminar usuarios.
 
 
 ## 4-Información sobre el servidor web y entornos usados
@@ -95,6 +97,10 @@ Para generar un pdf, presionar el boton de pdf y selecciona el rango de fechas, 
 - Deberán aparecer cargados todos los eventos guardados en el calendario de cada usuario:
 ![Logo](readme_assets/eventosCalen1.png)
 ![Logo](readme_assets/eventosCalen2.png)
+- Pagina de Usuarios, solo disponible para administradores:<br>
+![Logo](readme_assets/crud.png)
+- Menu de editar usuario.<br>
+![Logo](readme_assets/crud-editar.png)
 - El informe PDF deberá tener las siguientes opciones para filtrar: <br>
 ![Logo](readme_assets/botonPdf.png)
 - Diseño del informe:<br>

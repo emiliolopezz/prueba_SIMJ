@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,25 @@
             /*background-color: #002883;*/
             margin: 0;
             height: 100vh;
-            background: linear-gradient(45deg, #002883 50%,rgb(255, 255, 255) 50%);
+            background: linear-gradient(45deg, #002883 50%, rgb(255, 255, 255) 50%);
         }
-        .texto{
+
+        .texto {
             position: absolute;
             left: 45%;
             top: 25vh;
         }
-        .img{
+
+        .img {
             position: absolute;
             left: 15%;
             top: 10vh;
         }
-        h1{
+
+        h1 {
             color: #002883;
         }
+
         /**/
         .btn {
             display: inline-block;
@@ -36,19 +41,23 @@
             border-radius: 5px;
             transition: all 0.3s ease;
         }
+
         .btn-login {
             background-color: white;
             color: #002883;
             border: 3px solid #002883;
         }
+
         .btn-login:hover {
             background-color: #002883;
             color: white;
             transform: translateY(-3px);
         }
+
         .btn-login:active {
             transform: translateY(1px);
         }
+
         .btn-register {
             background-color: #002883;
             color: white;
@@ -58,37 +67,43 @@
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
+
         .btn-register:hover {
             background-color: white;
             color: #002883;
             transform: translateY(-3px);
         }
+
         .btn-register:active {
             transform: translateY(1px);
         }
+
         .buttons-container {
             position: absolute;
             top: 50vh;
             left: 50%;
             transform: translateX(-50%);
         }
-        .emilio{
+
+        .emilio {
             position: absolute;
             top: 90vh;
-            left:44%;
+            left: 44%;
         }
-        h2{
+
+        h2 {
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="img">
         <img src="{{ asset('img/SIMJ.png') }}" alt="">
     </div>
     <div class="texto">
         <h1>SOLUCIONES</h1>
-            <h1>INFORMATICAS MJ</h1>
+        <h1>INFORMATICAS MJ</h1>
     </div>
 
     <div class="buttons-container">
@@ -99,6 +114,7 @@
     <div class="emilio">
         <h2>EMILIO LOPEZ LEON</h2>
     </div>
-    
+
 </body>
+
 </html>

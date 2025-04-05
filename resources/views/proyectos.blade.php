@@ -2,57 +2,50 @@
 
 @section('title', 'Proyectos')
 
-@section('content_header')
-    <br>
-@stop
-
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid mt-9">
     <div class="row">
-        <div class="col-md-5">
-            <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                    <p class="mb-0">Control de proyectos.</p>
-
-                    <div class="ml-auto d-flex">
+        <!-- Columna izquierda -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <p class="mb-0 font-weight-bold">Control de proyectos</p>
+                    <div class="ml-auto d-flex align-items-center">
                         @if($isAdmin)
-                            <!-- admin -->
                             <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#modalProyecto">
-                                <i class="fas fa-fw fa-plus"></i>
+                                <i class="fas fa-plus"></i>
                             </button>
                         @endif
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalFiltros">
-                            <i class="fas fa-fw fa-file-pdf"></i>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modalFiltros">
+                            <i class="fas fa-file-pdf"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body">
                     <div id="proyectos-container">
-                        <!-- los proyectos se muestran aqui -->
+                        <!-- Los proyectos se muestran aquí -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-7">
-            <div class="card">
-                <!-- selector usuarios -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="userSelector">Mi Calendario:</label>
-                        <select id="userSelector" class="form-control" style="width: 200px;">
+        <!-- Columna derecha -->
+        <div class="col-md-7 mb-4">
+            <div class="card shadow-sm p-3">
+                <div class="form-group">
+                    <label for="userSelector">Mi Calendario:</label>
+                    <select id="userSelector" class="form-control" style="width: 200px;">
                         <option value="">Selecciona un usuario</option>
-                            <!-- las opciones se muestran aqui -->
-                        </select>
-                    </div>
+                        <!-- Opciones -->
+                    </select>
                 </div>
-                <!-- calendario -->
                 <div id="calendar"></div>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- modal proyecto -->
 <div class="modal fade" id="modalProyecto" tabindex="-1" role="dialog" aria-labelledby="modalProyectoLabel" aria-hidden="true">
@@ -135,11 +128,11 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_desde">Desde fecha:</label>
-                        <input type="datetime-local" id="fecha_desde" name="fecha_desde" class="form-control">
+                        <input type="date" id="fecha_desde" name="fecha_desde" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="fecha_hasta">Hasta fecha:</label>
-                        <input type="datetime-local" id="fecha_hasta" name="fecha_hasta" class="form-control">
+                        <input type="date" id="fecha_hasta" name="fecha_hasta" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="usuario">Selecciona un Usuario:</label>
@@ -208,6 +201,9 @@
             });
 
             // Guardar tarea cuando abre modal
+            $('#modalFechaHora').on('hidden.bs.modal', function () {
+            $('#formTarea')[0].reset(); 
+        });
             $('#formTarea').on('submit', function(event) {
                 event.preventDefault(); 
 
@@ -328,7 +324,7 @@
                                     <p>${proyecto.nombre}</p>
                                     <div class="d-flex justify-content-between align-items-center">        
                                         <p class="nUSU">Creado por ${proyecto.nombre_usuario}</p>
-                                        <p class="fecha">${proyecto.fecha_ultimo_uso}</p>
+                                        <p class="fecha">Fecha de ultimo uso: ${proyecto.fecha_ultimo_uso ? proyecto.fecha_ultimo_uso : 'No disponible'}</p>
                                     </div>
                                 </div>
                                 <br>
@@ -345,6 +341,10 @@
             cargarProyectos();
 
             // boton pdf
+            $('#modalFiltros').on('hidden.bs.modal', function () {
+            $('#formFiltro')[0].reset(); 
+        });
+
                         // Cargar los proyectos en el select de proyectos
                 function cargarProyectosModal() {
                 $.ajax({
@@ -370,7 +370,7 @@
                     success: function(response) {
                         var usuarioSelector = $('#usuario');
                         response.usuarios.forEach(function(usuario) {
-                            usuarioSelector.append(new Option(usuario.name, usuario.id));  // Agregar opción al selector
+                            usuarioSelector.append(new Option(usuario.name, usuario.id));
                         });
                     },
                     error: function() {
@@ -386,9 +386,12 @@
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
                 });
+
            // boton + para nuevo proyecto.
-        
-            
+           $('#modalProyecto').on('hidden.bs.modal', function () {
+            $('#formProyecto')[0].reset(); 
+        });
+
             $('#formProyecto').on('submit', function(event) {
                 event.preventDefault();
 
