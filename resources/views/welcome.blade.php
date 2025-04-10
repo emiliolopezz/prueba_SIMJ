@@ -107,8 +107,8 @@
     </div>
 
     <div class="buttons-container">
-        <a href="{{ route('login') }}" class="btn btn-login">Iniciar sesión</a> <!-- Estilo blanco con borde azul -->
-        <a href="{{ route('register') }}" class="btn btn-register">Registrarse</a> <!-- Estilo azul con borde blanco -->
+        <a href="{{ route('login') }}" class="btn btn-login">Iniciar sesión</a>
+        <a href="{{ route('register') }}" class="btn btn-register">Registrarse</a>
     </div>
 
     <div class="emilio">

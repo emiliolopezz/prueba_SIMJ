@@ -10,25 +10,27 @@
 
 <div class="card">
     <div class="card-header">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearUsuario">
+        <button class="btn btn-primary w-100 w-sm-auto" data-toggle="modal" data-target="#modalCrearUsuario">
             <i class="fas fa-plus"></i> Nuevo Usuario
         </button>
     </div>
     <div class="card-body">
-        <table class="table table-bordered" id="tablaUsuarios">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Administrador</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- los usuarios se llenan aqui -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="tablaUsuarios">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Administrador</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- los usuarios se llenan aquí -->
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -230,7 +232,6 @@
 @stop
 
 @section('css')
-{{-- Agrega aquí las hojas de estilo personalizadas si es necesario --}}
 <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop
 
